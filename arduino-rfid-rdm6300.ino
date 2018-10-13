@@ -10,6 +10,8 @@ static const int ETX = 3;
 
 byte _data[6];
 
+int lastTag;
+
 typedef enum {
   WAITING_FOR_STX,
   READING_DATA,
@@ -35,21 +37,24 @@ void loop()
 
   if (rfidAvailable()) {
     getData(data, length);
-    Serial.print("Hex tag: ");
-    for (int i = 0; i < length; i++) {
-      Serial.print(data[i], HEX);
-      Serial.print(" ");
+    int tag = getTag(data);
+    if (tag != lastTag) {
+      char output[40];
+      sprintf(output, "Decimal tag: %u", tag);
+      Serial.println(output);
     }
-    Serial.println();
-    // Concatenate the bytes in the data array to one long rendered as a decimal.
-    unsigned long result =
-      ((unsigned long int)data[1] << 24) +
-      ((unsigned long int)data[2] << 16) +
-      ((unsigned long int)data[3] << 8) +
-      data[4];
-    Serial.print("Decimal tag: ");
-    Serial.println(result);
+    lastTag = tag;
   }
+}
+
+int getTag(byte* data) {
+  // Concatenate the bytes in the data array to one long rendered as a decimal.
+  int thisTag =
+    ((int)data[1] << 24) +
+    ((int)data[2] << 16) +
+    ((int)data[3] << 8) +
+    data[4];
+  return thisTag;
 }
 
 void getData(byte* data, byte& length) {
