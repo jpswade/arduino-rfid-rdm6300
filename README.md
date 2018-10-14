@@ -2,6 +2,8 @@
 
 This will demonstrate how to use the RDM6300 to be able to read RFID tags using the Arduino software.
 
+![RDM6300 with ESP8266](https://scontent-lht6-1.cdninstagram.com/vp/0232e097b131fcab1a0ee1e6077db93d/5C5C7C0F/t51.2885-15/e35/42756112_188748952021254_4986979122585534464_n.jpg)
+
 ## RDM630 vs RDM6300
 
 The RDM630 and the RDM6300 are two different types of RFID readers, but are easily confused.
