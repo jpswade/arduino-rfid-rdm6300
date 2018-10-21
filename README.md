@@ -75,9 +75,9 @@ When an RFID tag is detected, the device will send a payload of 14 bytes:
 | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   | 10  | 11  | 12  | 13  | 14  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | h   | d   | d   | d   | d   | d   | d   | d   | d   | d   | d   | c   | c   | t   |
-| 2   | x   | x   | x   | x   | x   | x   | x   | x   | x   | x   | x   | x   | 2   |
+| 2   | x   | x   | x   | x   | x   | x   | x   | x   | x   | x   | x   | x   | 3   |
 
-The head (h) or tx start is always 2 and the tail (t) or tx end is always 2.
+The head (h) or tx start is always 2 and the tail (t) or tx end is always 3.
 
 The 10 digits (d) of the tag data are hexadecimal (x), which you can convert into a decimal or ASCII values.
 
